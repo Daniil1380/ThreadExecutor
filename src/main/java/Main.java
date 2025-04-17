@@ -4,17 +4,17 @@ public class Main {
     public static void main(String[] args) {
         // Создаем пул с параметрами
         CustomExecutor pool = new CustomThreadPool(
-                4,       // corePoolSize
+                5,       // corePoolSize
                 10,      // maxPoolSize
                 60,      // keepAliveTime
                 TimeUnit.SECONDS,
-                2,     // queueSize
+                20,     // queueSize
                 0,       // minSpareThreads
                 new RejectedExecutionHandlerImpl()
         );
 
         // Отправляем задачи
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
             int taskId = i;
             pool.execute(() -> {
                 System.out.println("Task " + taskId + " started by " + Thread.currentThread().getName());
